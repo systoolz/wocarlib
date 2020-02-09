@@ -1,0 +1,78 @@
+#ifndef __WOCARLIB_H
+#define __WOCARLIB_H
+
+#include <windows.h>
+#include "ocrdll.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#pragma pack(push, 1)
+typedef struct {
+  HINSTANCE hLibrary;
+  ADDDIBPROC AddDIB;
+  ADDIMAGEPROC AddImage;
+  CREATEMULTIPLEIMGPROC CreateMultipleImg;
+  DIBTOIMGPROC DIBToIMG;
+  DELIMAGEPROC DelImage;
+  DESKEWIMGPROC DeskewImg;
+  ERASEBLACKBORDERSIMGPROC EraseBlackBordersImg;
+  EXTRACTIMGAREAPROC ExtractImgArea;
+  FREEIMGPROC FreeImg;
+  FREEMULTIPLEIMGPROC FreeMultipleImg;
+  GETIMAGEPROC GetImage;
+  GETIMGBITMAPPROC GetImgBitmap;
+  GETIMGBITMAPINFOPROC GetImgBitmapInfo;
+  GETIMGBITMAPSIZEPROC GetImgBitmapSize;
+  GETIMGRESPROC GetImgRes;
+  GETIMGSIZEPROC GetImgSize;
+  GETNBIMAGESPROC GetNbImages;
+  HALFSIZEIMGPROC HalfSizeImg;
+  INSERTIMAGEPROC InsertImage;
+  INVERTIMGPROC InvertImg;
+  LOADIMGPROC LoadImg;
+  LOADMULTIPLEIMGPROC LoadMultipleImg;
+  OCRPROC OCR;
+  OCRONAREAPROC OCROnArea;
+  OCRONAREA2PROC OCROnArea2;
+  OCRSETERRORHANDLERPROC OCRSetErrorHandler;
+  OCRSETOUTPUTHANDLERPROC OCRSetOutputHandler;
+  OCRSETPROGRESSHANDLERPROC OCRSetProgressHandler;
+  OCRSETWARNINGHANDLERPROC OCRSetWarningHandler;
+  REPLACEIMAGEPROC ReplaceImage;
+  RESIZEIMGPROC ResizeImg;
+  ROTATEIMGPROC RotateImg;
+  SAVEIMGPROC SaveImg;
+  SAVEMULTIPLEIMGPROC SaveMultipleImg;
+  SCANANDADDIMAGEPROC ScanAndAddImage;
+  SCANAUTOBRIGHTPROC ScanAutoBright;
+  SCANAVAILABLEPROC ScanAvailable;
+  SCANBRIGHTNESSPROC ScanBrightness;
+  SCANENDPROC ScanEnd;
+  SCANIMGPROC ScanImg;
+  SCANINITPROC ScanInit;
+  SCANRESOLUTIONPROC ScanResolution;
+  SCANSELECTPROC ScanSelect;
+  SCANSHOWUIPROC ScanShowUI;
+  SCANTHRESHOLDPROC ScanThreshold;
+  SETLANGUAGEPROC SetLanguage;
+  SETOUTPUTMODEPROC SetOutputMode;
+  SETOUTPUTWINDOWPROC SetOutputWindow;
+  SHRINKIMGPROC ShrinkImg;
+} WOCARPTR;
+#pragma pack(pop)
+
+/* these hacks will work only with the known versions */
+#define WOCAR_DEBUG_NONE 1
+#define WOCAR_DEBUG_MORE 2
+
+WOCARPTR *LoadWOCAR(int state);
+void FreeWOCAR(WOCARPTR *wp);
+HBITMAP LoadGDIPImage(TCHAR *filename);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif
